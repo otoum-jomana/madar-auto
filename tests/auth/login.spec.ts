@@ -15,9 +15,10 @@ test.describe('MADAR - Login Authentication Suite', () => {
         await expect(page).toHaveURL(/.*\/dashboard/);    });
 
         // test2: negative scenario(random credentials)
+       
+       
     test('Should not login with unregistered random credentials', async ({ page }) => {
         const loginPage = new LoginPage(page);
-        
         await page.goto('/login', { waitUntil: 'domcontentloaded' });
 
         const randomEmail = faker.internet.email();
@@ -25,10 +26,11 @@ test.describe('MADAR - Login Authentication Suite', () => {
 
         await loginPage.login(randomEmail, randomPassword); 
  
-        //login failed
+        // login failed
         await expect(page).toHaveURL(/.*\/login/);
         await expect(page).not.toHaveURL(/.*\/dashboard/);
-        
+ 
+        });
         // test3: negative scenario (short password)
     test('Should show error when password is too short', async ({ page }) => {
         const loginPage = new LoginPage(page);
@@ -42,5 +44,5 @@ test.describe('MADAR - Login Authentication Suite', () => {
         // Expect: error message about password length
         await expect(page).toHaveURL(/.*\/login/);
     });
-    });
+    
 });

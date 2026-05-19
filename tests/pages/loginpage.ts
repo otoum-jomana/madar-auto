@@ -8,12 +8,15 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        //page-feild
+        // page-feild-
         this.emailInput = page.getByLabel('Email Address *', { exact: false });
         this.passwordInput = page.getByLabel('Password *', { exact: false });
         
         this.signInButton = page.getByRole('button', { name: 'Sign In', exact: true });
     }
+        // this.emailInput = page.locator('input[type="email"]');
+        // this.passwordInput = page.locator('input[type="password"]');
+        // this.signInButton = page.locator('button[type="submit"]');}
 
     async login(email: string, password: string) {
         await this.emailInput.fill(email);
